@@ -1,0 +1,8 @@
+{
+  "name": "Lulify Pro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "ab5310c5"
+}
