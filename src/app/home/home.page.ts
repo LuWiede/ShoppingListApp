@@ -66,12 +66,18 @@ export class HomePage {
     localStorage.setItem('doneitems', doneitemsAsText);
   }
 
+  clickedItemIndex: number = -1;
+
   doneItem(i){
+
+    this.clickedItemIndex = i;
+
     setTimeout(()=>{
       this.pushItemToDone(i);
       this.shoppingList.splice(i, 1);
       this.save();
-    }, 500);  
+      this.clickedItemIndex = -1;
+    }, 500); 
   }
 
   reverse(i){
