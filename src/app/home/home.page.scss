@@ -14,11 +14,14 @@ ion-button {
     --background: rgb(63, 63, 63);
     margin-right: 2%;
     margin-bottom: 5%;
-    height: 50px;
+    height: 55px;
+    width: 55px;
 } 
 
 .addIcon {
-    color: #ffffff;
+    color: rgba(229, 225, 225, 0.6);
+    width: 60px;
+    height: 60px;
 }
 
 ion-button {
@@ -31,8 +34,7 @@ ion-button {
     padding: 32px;
     padding-bottom: 0%;
     color: rgba(229, 225, 225, 0.6);
-    background-color: black;
-    --ion-background-color: #ffffff;
+    --ion-item-background: #121212;
 }
 
 .doneTask {
@@ -49,10 +51,6 @@ ion-button {
     color: rgb(255, 255, 255);
 }
 
-.doneButton:active {
-    color: #4cc267;
-}
-
 .toolbar {
     text-align: center;
 }
@@ -65,7 +63,6 @@ ion-button {
 
 .headline {
     margin: 5%;
-    background-color: black;
 }
 
 .doneText {
@@ -98,13 +95,14 @@ hr.solid {
 }
 
 .list {
-    --ion-item-background:black;
+    --ion-item-background: #121212;
+    padding-bottom: 0px;
 }
 
 .doneList {
-    --ion-item-background:black;
     margin-top: -25px;
     padding: 0px;
+    --ion-item-background: #121212;
 }
 
 .doneText {
