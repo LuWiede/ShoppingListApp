@@ -114,4 +114,13 @@ export class HomePage {
     await alert.present();
   }
 
+  display = 1;
+
+  hideDoneList() {
+  
+    this.display = 1 - this.display;
+  }
+
+
+
 }
