@@ -10,8 +10,15 @@
 
   <div class="paddingBottom">
 
-    <div class="noItemsText" *ngIf="shoppingList.length == 0">
-      <img src="src\assets\allDone.jpg" width="100%" height="100%">
+    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0">
+      <ion-img
+      src="../assets/allDone.jpg"
+      alt="all done">
+    </ion-img>
+    </div>
+
+    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length == 0">
+      add new items
     </div>
 
     <ion-list lines="none" class="list">

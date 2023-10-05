@@ -24,3 +24,80 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+.customAltert .alert-wrapper{
+    
+    border-radius: 10px;
+    border-color: black;
+    min-width: 90% !important;
+    border: 1px solid rgba(229, 225, 225, 0.6);
+
+
+    .alert-head {
+        background-color: rgb(17, 17, 17);
+    }
+
+    .altert-button-group {
+        display: flex;
+        justify-content:center;
+        width: 100%;
+    }
+
+    button {
+        border: 1px solid rgba(229, 225, 225, 0.6);
+        border-radius: 10%;
+        color: rgba(229, 225, 225, 0.6);
+    }
+
+    h2 {
+        color: rgba(229, 225, 225, 0.6);
+    }
+
+}
+
+.customAltert {
+    background-color: rgb(39, 39, 39);;
+    margin-top: 13%;
+}
+
+////////////////////////////////////////////////////////////
+
+.customDeleteAltert .alert-wrapper{
+    
+    border-radius: 10px;
+    border-color: black;
+    min-width: 90% !important;
+    border: 1px solid rgba(229, 225, 225, 0.6);
+
+    .alert-head {
+        background-color: rgb(17, 17, 17);
+    }
+
+    .altert-button-group {
+        display: flex;
+        justify-content:center;
+        
+    }
+
+    button.alert-button:nth-child(2){
+        color: rgba(217, 104, 134);
+        border: rgba(217, 104, 134) 1px solid;
+        border-radius: 10%;
+    }
+
+    button.alert-button:nth-child(1){
+        border: 1px solid rgba(229, 225, 225, 0.6);
+        border-radius: 10%;
+        color: rgba(229, 225, 225, 0.6);
+    }
+
+    h2 {
+        color: rgba(229, 225, 225, 0.6);
+    }
+
+}
+
+.customDeleteAltert {
+    background-color: rgb(39, 39, 39);
+    margin-top: 13%;
+}
