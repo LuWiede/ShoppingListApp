@@ -24,7 +24,7 @@ export class HomePage {
       buttons: [{
         text: 'Add',
         handler: (textfields) => {
-          if(textfields[0].length == 0 || textfields[0].length >= 30){
+          if(textfields[0].length == 0 || textfields[0].length >= 60){
             this.presentToast('please enter an item or string too long!');
           }
           else {
@@ -120,7 +120,7 @@ export class HomePage {
     await alert.present();
   }
 
-  display = 1;
+  display = 0;
 
   hideDoneList() {
   
