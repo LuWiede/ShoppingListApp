@@ -10,6 +10,10 @@
 
   <div class="paddingBottom">
 
+    <div>
+      <ion-button [routerLink]="['/dayplanner']">Go to DayPlanner</ion-button> 
+    </div>
+
     <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0">
       <ion-img
       src="../assets/allDone.jpg"

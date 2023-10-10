@@ -14,7 +14,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'dayplanner',
+    loadChildren: () => import('./dayplanner/dayplanner.module').then( m => m.DayplannerPageModule)
   },
+
 ];
 
 @NgModule({
