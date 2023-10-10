@@ -10,8 +10,9 @@
 
   <div class="paddingBottom">
 
-    <div>
-      <ion-button [routerLink]="['/dayplanner']">Go to DayPlanner</ion-button> 
+    <div class="nav">
+      <ion-button class="navButton" routerLinkActive="active" [routerLink]="['/home']">Tasks</ion-button>
+      <ion-button class="navButton" routerLinkActive="active" [routerLink]="['/dayplanner']">Day Planner</ion-button> 
     </div>
 
     <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0">
@@ -41,7 +42,7 @@
         <div>
 
           <ion-icon class="hideDoneListButton" 
-          name="{{ display ? 'chevron-up-circle-outline' : 'chevron-down-circle-outline' }}"(click)="hideDoneList()"></ion-icon>
+          name="{{ display ? 'chevron-up-outline' : 'chevron-down-outline' }}"(click)="hideDoneList()"></ion-icon>
 
           <b class="space"></b>
           <ion-icon class="deleteDoneListButton" name="close-circle-outline" (click)="deleteDoneList()" slot="end"></ion-icon>     

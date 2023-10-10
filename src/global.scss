@@ -101,3 +101,26 @@
     background-color: rgb(6, 6, 6);
     margin-top: 13%;
 }
+
+.title {
+    text-align: center;
+}
+
+.paddingBottom {
+    padding-bottom: 100px;
+}
+
+.nav {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.navButton {
+    color: antiquewhite;
+    --background: transparent;
+}
+
+.active {
+    border-bottom: 2px solid  rgb(84, 84, 84);
+}
