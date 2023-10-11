@@ -26,13 +26,6 @@ ion-button {
     --border-width: 1px;
 }
 
-.noItemsText {
-    padding: 32px;
-    padding-bottom: 0%;
-    color: rgba(229, 225, 225, 0.6);
-    --ion-item-background: #121212;
-}
-
 .doneTask {
     color:  rgba(142, 137, 137, 0.6);
     text-decoration: line-through;
@@ -43,10 +36,6 @@ ion-button {
     color: rgba(217, 104, 134);
 }
 
-.listItem {
-    color: rgb(255, 255, 255);
-}
-
 .toolbar {
     text-align: center;
 }
@@ -55,10 +44,6 @@ ion-button {
     color: rgba(217, 104, 134);
     text-align: right;
     margin-right: 3%;
-}
-
-.headline {
-    margin: 5%;
 }
 
 .doneText {
@@ -85,16 +70,6 @@ ion-button {
     display:flex; justify-content:space-between;
 }
 
-hr.solid {
-    border-top: 1px solid rgb(84, 84, 84);
-    width: 100%;
-}
-
-.list {
-    --ion-item-background: #121212;
-    padding-bottom: 0px;
-}
-
 .doneList {
     margin-top: -25px;
     padding: 0px;
@@ -118,3 +93,56 @@ ion-content {
   .paddingBottom {
     padding-bottom: 100px;
   }
+
+  .noItemsText {
+    padding: 32px;
+    padding-bottom: 0%;
+    color: rgba(229, 225, 225, 0.6);
+    --ion-item-background: #121212;
+}
+
+.customDeleteAltert {
+    background-color: rgb(6, 6, 6);
+    margin-top: 13%;
+}
+
+.title {
+    text-align: center;
+}
+
+.paddingBottom {
+    padding-bottom: 100px;
+}
+
+.nav {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.navButton {
+    color: antiquewhite;
+    --background: transparent;
+}
+
+.active {
+    border-bottom: 2px solid  rgb(84, 84, 84);
+}
+
+hr.solid {
+    border-top: 1px solid rgb(84, 84, 84);
+    width: 100%;
+}
+
+.headline {
+    margin: 5%;
+}
+
+.listItem {
+    color: rgb(255, 255, 255);
+}
+
+.list {
+    --ion-item-background: #121212;
+    padding-bottom: 0px;
+}

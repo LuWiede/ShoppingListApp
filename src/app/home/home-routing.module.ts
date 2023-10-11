@@ -8,12 +8,6 @@ const routes: Routes = [
     path: '',
     component: HomePage
   },
-
-  {
-    path: 'dayplanner',
-    loadChildren: () => import('../dayplanner/dayplanner.module').then( m => m.DayplannerPageModule)
-  },
-
 ];
 
 @NgModule({

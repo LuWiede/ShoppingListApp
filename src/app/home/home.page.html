@@ -9,11 +9,8 @@
 <ion-content [fullscreen]="true">
 
   <div class="paddingBottom">
-
-    <div class="nav">
-      <ion-button class="navButton" routerLinkActive="active" [routerLink]="['/home']">Tasks</ion-button>
-      <ion-button class="navButton" routerLinkActive="active" [routerLink]="['/dayplanner']">Day Planner</ion-button> 
-    </div>
+    
+    <hr class="nav"> 
 
     <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0">
       <ion-img
