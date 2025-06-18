@@ -2,9 +2,22 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+/*** Kaufland-Mode Luisa ***/
+.kaufland-mode-page {
+  --ion-toolbar-background:#ce061d !important;
+  --ion-color-primary: #ce061d !important;
+  --ion-background-color: white!important;
+  --background:white;
+  --ion-item-background:white;
+  --ion-text-color-rgb: black;
+  --ion-backdrop-color: white;
+  --ion-border-color: rgb(245, 243, 243);
+}
+
 :root {
   /** primary **/
-  --ion-color-primary: #5cc4da;
+  --ion-color-primary: #7c0e61;
   --ion-color-primary-rgb: 92, 196, 218;
   --ion-color-primary-contrast: #000000;
   --ion-color-primary-contrast-rgb: 0, 0, 0;
@@ -75,6 +88,7 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
 
 @media (prefers-color-scheme: dark) {
   /*
@@ -153,7 +167,7 @@
    */
 
   .ios body {
-    --ion-background-color: #000000;
+    --ion-background-color: #4a1455;
     --ion-background-color-rgb: 0,0,0;
 
     --ion-text-color: #ffffff;

@@ -1,35 +1,79 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true"
+[ngClass]="{
+    'dark-mode-page': darkMode,
+    'kaufland-mode-page': kauflandMode
+  }">
   <ion-toolbar>
-    <ion-title class="title">
-      Tasks
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <!-- Dein Titel -->
+    <ion-title class="title">Tasks</ion-title>
 
-<ion-content [fullscreen]="true">
+    <!-- Settings-Button ganz rechts -->
+    <ion-buttons slot="end">
+      <ion-button routerLink="/settings">
+        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+<ion-content [fullscreen]="true"
+[ngClass]="{
+    'dark-mode-page': darkMode,
+    'kaufland-mode-page': kauflandMode
+  }">
 
   <div class="paddingBottom">
-    
+
     <hr class="nav"> 
 
-    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0">
+    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0 && darkMode">
       <ion-img
       src="../assets/allDone.jpg"
       alt="all done">
     </ion-img>
     </div>
 
-    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length == 0">
+    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0 && kauflandMode">
+      <ion-img
+      src="../assets/kaufland.png"
+      alt="all done"
+      (click)="goToKaufland()">
+    </ion-img>
+    </div>
+
+  <div class= "kaufland" *ngIf="shoppingList.length == 0 && doneList.length == 0 && kauflandMode">
+    <p class="headline_kaufland">Don't miss our weekly specials
+    <a class="link_kaufland" href="https://filiale.kaufland.de/prospekte.html">Check now!</a>
+    </p>
+  </div>
+
+    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length == 0 && darkMode" >
       add new items
     </div>
 
-    <ion-list lines="none" class="list">
-      <ion-item class="listItem" *ngFor="let item of shoppingList; let i = index" >
-        <ion-label>{{ item }} </ion-label>
+  <ion-list lines="none" class="list">
     
-        <ion-icon [name]="(i === clickedItemIndex) ? 'checkmark-outline' : 'ellipse-outline'" (click)="doneItem(i)" class="doneButton" slot="start"></ion-icon>
+    <ion-reorder-group [disabled]="false"
+                       (ionItemReorder)="doReorder($event)">
+     
+      <ion-item *ngFor="let item of shoppingList; let i = index" class="listItem">
+        
+        <ion-icon 
+          slot="start"
+          class="doneButton"
+          [name]="i === clickedItemIndex ? 'checkmark-outline' : 'ellipse-outline'"
+          (click)="doneItem(i)">
+        </ion-icon>
+
+        <!-- dein Label mit <br> falls vorhanden -->
+        <ion-label [innerHTML]="item"></ion-label>
+
+        <!-- 3) Das eine Drag-Handle rechts -->
+        <ion-reorder class="drag_drop" slot="end"></ion-reorder>
       </ion-item>
-    </ion-list>
+    </ion-reorder-group>
+  </ion-list>
+
+
 
     <hr class="solid"> 
 
@@ -40,7 +84,6 @@
 
           <ion-icon class="hideDoneListButton" 
           name="{{ display ? 'chevron-up-outline' : 'chevron-down-outline' }}"(click)="hideDoneList()"></ion-icon>
-
           <b class="space"></b>
           <ion-icon class="deleteDoneListButton" name="close-circle-outline" (click)="deleteDoneList()" slot="end"></ion-icon>     
         </div>

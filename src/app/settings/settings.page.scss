@@ -1,0 +1,38 @@
+.title {
+    text-align: center;
+    margin-right: 30px;
+}
+
+/* Kaulfand Mode Background und Textfarbe */
+.kaufland-mode-page {
+
+  .headlile_settings {
+    color: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    background-color: rgb(245, 243, 243);
+}
+
+.toolbar-background {
+  background: #ce061d !important;
+  --background: #ce061d !important;
+}
+
+.icon {
+  color: black;
+}
+
+.label {
+  color: black;
+}
+
+}
+
+/* dark Mode Background und Textfarbe */
+.dark-mode-page {
+    
+  .headlile_settings {
+    color: rgba(229, 225, 225, 0.6);
+    padding: 15px;
+}
+
+}

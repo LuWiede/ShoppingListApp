@@ -1,0 +1,40 @@
+<ion-header [translucent]="true"
+[ngClass]="{
+    'dark-mode-page': dark_mode,
+    'kaufland-mode-page': kaufland_mode
+  }">
+  <ion-toolbar>
+    <ion-title class="title">Settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"
+[ngClass]="{
+    'dark-mode-page': dark_mode,
+    'kaufland-mode-page': kaufland_mode
+  }">
+
+  <div class="headlile_settings">APP SETTINGS</div>
+
+  <ion-item>
+      <ion-icon class="icon" slot="start" name="moon-outline"></ion-icon>
+      <ion-label class="label" >Dark Mode</ion-label>
+      <ion-toggle slot="end"
+       [checked]="dark_mode"
+      (ionChange)="onDarkToggle($event)"></ion-toggle>
+    </ion-item>
+
+      <ion-item>
+      <ion-icon class="icon" slot="start" name="pizza-outline"></ion-icon>
+      <ion-label class="label">Kaufland Mode</ion-label>
+      <ion-toggle slot="end"
+      [checked]="kaufland_mode"
+      (ionChange)="onKauflandToggle($event)"></ion-toggle>
+    </ion-item>
+
+</ion-content>
