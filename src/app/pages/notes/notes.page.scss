@@ -1,72 +1,10 @@
-/* allgemein*/
+.title {
+    text-align: center;
+    margin-right: 30px;
+}
 
-
-/* Kaufland Mode Background und Textfarbe */
-.kaufland-mode-page {
-
-    .kaufland {
-        margin: 2%;
-        margin-top: -10px !important;
-        padding: 2%;
-        background-color: rgb(250, 248, 248);
-        border-left: 4px solid #ce061d;
-    }
-
-    .headline_kaufland {
-        color: black;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        overflow: hidden;
-        transform: translateX(-100%);
-        animation: slideIn 0.9s ease-out forwards;
-
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(-100%); }
-      to   { transform: translateX(0); }
-    }
-
-    @keyframes colorCycle {
-    0%   { background-color: #ce061d; }
-    25%  { background-color: #05ad2a; }
-    50%  { background-color: #bb098e; }
-    75%  { background-color: #bb930e; }
-    100% { background-color: #3106ce; }   
-    }
-
-    @keyframes pulsieren {
-      0% {
-        transform: scale(1); /* Ursprüngliche Größe */
-      }
-      50% {
-        transform: scale(1.1); /* Größer machen */
-      }
-      100% {
-        transform: scale(1); /* Zurück zur ursprünglichen Größe */
-      }
-    }
-
-    .link_kaufland {
-        margin-left: 3%;
-        display: inline-flex;
-        background-color: #ce061d;
-        color: #fff;
-        border-radius: 10%;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        padding: 7px;
-        text-decoration: none;
-
-        animation-name: colorCycle, pulsieren;
-        animation-duration: 10s, 1s;
-        animation-iteration-count: infinite, infinite;
-        animation-timing-function: ease-in-out, ease-in-out;
-    }
-
-    .drag_drop {
-    color: white;
+    .paddingBottom {
+        padding-bottom: 100px;
     }
 
     .footer {
@@ -75,13 +13,16 @@
         padding: 3%;    
     }
 
-    
-    .title {
-        text-align: center;
-        margin-right: 30px;
+    .kaufland-mode-page  {
+          ion-icon {
+        font-size: 25px;
     }
 
-    .addButton {
+    .doneNotesList {
+        padding: 0px;
+    }
+
+  .addButton {
         --border-radius:20%;
         --color-hover: var(--ion-color-primary);
         --background: white;
@@ -90,7 +31,7 @@
         height: 55px;
         width: 55px;
         border-color: black;
-    } 
+    }
 
     .addIcon {
         color: black;
@@ -98,7 +39,22 @@
         height: 60px;
     }
 
-    ion-button {
+    .drag_drop {
+    color: white;
+    }
+
+    .title {
+        text-align: center;
+        margin-right: 30px;
+    }
+
+    .addIcon {
+        color: black;
+        width: 60px;
+        height: 60px;
+    }
+
+     ion-button {
         --border-color: var(--ion-background-color);
         --border-style: none;
         --border-width: 1px;
@@ -195,7 +151,10 @@
     }
 
     .headline {
-        margin: 5%;
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 0%;
     }
 
     .listItem {
@@ -211,35 +170,34 @@
     pointer-events: all !important;
     z-index: 10;
     }
+
     }
 
-/* dark Mode Background und Textfarbe  ----------------------------------------------------------------------------------------------------------------------------------*/
-.dark-mode-page {
+    //---------------------------------------------------------------------------------------------
 
-    .kaufland {
-        display: none;
+    .dark-mode-page  {
+           ion-icon {
+        font-size: 28px;
+  }
+
+    .addButton {
+        --border-radius:20%;
+        --color-hover: var(--ion-color-primary);
+        --background: rgb(63, 63, 63);
+        margin-right: 2%;
+        margin-bottom: 5%;
+        height: 55px;
+        width: 55px;
     }
-
     .drag_drop {
-    color: #121212;
-    }
+        color: #121212;
+        }
 
-    .footer {
+        .footer {
     position:fixed;
     bottom:0;
     padding: 3%;
 }
-
-.addButton {
-    --border-radius:20%;
-    --color-hover: var(--ion-color-primary);
-    --background: rgb(63, 63, 63);
-    margin-right: 2%;
-    margin-bottom: 5%;
-    height: 55px;
-    width: 55px;
-} 
-
 .addIcon {
     color: rgba(229, 225, 225, 0.6);
     width: 60px;
@@ -348,8 +306,11 @@ hr.solid {
 }
 
 .headline {
-    margin: 5%;
-}
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 0%;
+    }
 
 .listItem {
     color: rgb(255, 255, 255);
@@ -365,4 +326,7 @@ ion-reorder {
   z-index: 10;
 }
 
-}
+
+
+
+    }

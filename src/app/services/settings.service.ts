@@ -11,12 +11,18 @@ export class SettingsService {
     JSON.parse(localStorage.getItem('kaufland_mode') || 'false')
   );
 
+   private nibbsModeSub = new BehaviorSubject<boolean>(
+    JSON.parse(localStorage.getItem('nibbs_mode') || 'false')
+  );
+
   darkMode$ = this.darkModeSub.asObservable();
   kauflandMode$ = this.kauflandModeSub.asObservable();
+  nibbsMode$ = this.nibbsModeSub.asObservable();
 
   constructor() {
     const dark = this.darkModeSub.value;
     const kaufland = this.kauflandModeSub.value;
+    const nibbs = this.nibbsModeSub.value;
 
     if (!dark && !kaufland) {
       console.warn('Beide Modi waren false – aktiviere DarkMode als Fallback');
@@ -57,5 +63,12 @@ export class SettingsService {
     if (on) {
       this.setDarkMode(false);
     }
+  }
+
+  setNibbsMode(on: boolean) {
+
+    this.nibbsModeSub.next(on);
+    localStorage.setItem('nibbs_mode', JSON.stringify(on));
+
   }
 }

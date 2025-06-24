@@ -35,6 +35,10 @@
 /* ---------------------------------------- */
 .kaufland-mode-page {
 
+    .toolbar-container {
+        background-color: green !important;
+    }
+
 .customAltert {
     background-color: rgb(255, 255, 255) !important; 
     background: white !important;
@@ -48,6 +52,10 @@
 
 .alert-title {
     color: black !important;
+}
+
+.alert-input {
+    color: black;
 }
 
 .altert-button-group {

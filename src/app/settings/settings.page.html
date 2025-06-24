@@ -37,4 +37,16 @@
       (ionChange)="onKauflandToggle($event)"></ion-toggle>
     </ion-item>
 
+    <div class="headlile_settings">NIBBS SETTINGS</div>
+
+    <ion-item>
+      <ion-icon class="icon" slot="start" name="ribbon-outline"></ion-icon>
+      <ion-label class="label">Nibbs Mode</ion-label>
+      <ion-toggle slot="end"
+      [checked]="nibbs_mode"
+      (ionChange)="onNibbsToggle($event)"></ion-toggle>
+    </ion-item>
+
+    <div class="headlile_settings">NIBBS SHOP</div>
+
 </ion-content>

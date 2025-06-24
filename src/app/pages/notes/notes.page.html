@@ -1,47 +1,20 @@
-<ion-menu contentId="main-content" side="start" type="overlay">
-  <ion-header>
-    <ion-toolbar class="toolbar">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
-
-      <ion-item routerLink="/notes">
-        <ion-icon slot="start" name="list-outline"></ion-icon>
-        <ion-label>Notes</ion-label>
-      </ion-item>
-
-      <ion-item routerLink="/recipes">
-        <ion-icon slot="start" name="fast-food-outline"></ion-icon>
-        <ion-label>Recipes</ion-label>
-      </ion-item>
-
-    <ion-item routerLink="/settings">
-        <ion-icon slot="start" name="settings-outline"></ion-icon>
-        <ion-label>Settings</ion-label>
-      </ion-item>
-    
-  </ion-content>
-</ion-menu>
-
-<ion-header [translucent]="true"
+<ion-header [translucent]="true" 
 [ngClass]="{
     'dark-mode-page': darkMode,
     'kaufland-mode-page': kauflandMode
   }">
+
   <ion-toolbar>
-    <ion-title class="title">Tasks</ion-title>
-
-    <!-- Sidebar-Button ganz links -->
+    <ion-title class="title">Notes</ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
- </ion-toolbar>
- </ion-header>
-    
+  </ion-toolbar>
+</ion-header>
 
-<ion-content  id="main-content" [fullscreen]="true"
+<ion-content [fullscreen]="true"
 [ngClass]="{
     'dark-mode-page': darkMode,
     'kaufland-mode-page': kauflandMode
@@ -51,28 +24,22 @@
 
     <hr class="nav"> 
 
-    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0 && darkMode">
+    <div class="noItemsText" *ngIf="NotesList.length == 0 && doneNotesList.length > 0 && darkMode">
       <ion-img
       src="../assets/allDone.jpg"
       alt="all done">
     </ion-img>
     </div>
 
-    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0 && kauflandMode">
-      <ion-img
-      src="../assets/kaufland.png"
-      alt="all done"
-      (click)="goToKaufland()">
-    </ion-img>
+    <div class="noItemsText" *ngIf="NotesList.length == 0 && doneNotesList.length > 0 && kauflandMode">
+      
     </div>
 
-  <div class= "kaufland" *ngIf="shoppingList.length == 0 && doneList.length == 0 && kauflandMode">
-    <p class="headline_kaufland">Don't miss our weekly specials
-    <a class="link_kaufland" href="https://filiale.kaufland.de/prospekte.html">Check now!</a>
-    </p>
+  <div class= "kaufland" *ngIf="NotesList.length == 0 && doneNotesList.length == 0 && kauflandMode">
+    add new items
   </div>
 
-    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length == 0 && darkMode" >
+    <div class="noItemsText" *ngIf="NotesList.length == 0 && doneNotesList.length == 0 && darkMode" >
       add new items
     </div>
 
@@ -81,7 +48,7 @@
     <ion-reorder-group [disabled]="false"
                        (ionItemReorder)="doReorder($event)">
      
-      <ion-item *ngFor="let item of shoppingList; let i = index" class="listItem">
+      <ion-item *ngFor="let item of NotesList; let i = index" class="listItem">
         
         <ion-icon 
           slot="start"
@@ -99,11 +66,9 @@
     </ion-reorder-group>
   </ion-list>
 
-
-
     <hr class="solid"> 
 
-    <div class="headline" *ngIf="doneList.length > 0">
+    <div class="headline" *ngIf="doneNotesList.length > 0">
       <div class="done"> 
         <div class="doneText">Done</div>
         <div>
@@ -117,21 +82,19 @@
   </div>
 
     <div id="hide" [ngStyle]="{'display': display ? 'none' : 'block'}">
-      <ion-list class="doneList" lines="none">
-        <ion-item *ngFor="let item of doneList; let i = index" class="doneTask">
+      <ion-list class="doneNotesList" lines="none">
+        <ion-item *ngFor="let item of doneNotesList; let i = index" class="doneTask">
           <ion-label>{{ item }}</ion-label>
           <ion-icon name="checkmark-outline" (click)="reverse(i)" slot="start"></ion-icon>
         </ion-item>
       </ion-list>
     </div>
+    </div>
     
-
-</div>
-
   <ion-footer>
     <ion-toolbar class="footer">
       <ion-button class="addButton" slot="end" (click)="addItem()"><ion-icon name="add-outline" class="addIcon"></ion-icon></ion-button>
     </ion-toolbar>
   </ion-footer>
-</ion-content>
 
+</ion-content>

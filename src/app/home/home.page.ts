@@ -22,6 +22,7 @@ export class HomePage {
 
   darkMode = false;
   kauflandMode = false;
+  nibbsMode = false;
 
   constructor(private alertController: AlertController,
     private toastController: ToastController,
@@ -30,12 +31,12 @@ export class HomePage {
    ngOnInit() {
     this.settings.darkMode$.subscribe(dm => this.darkMode = dm);
     this.settings.kauflandMode$.subscribe(km => this.kauflandMode = km);
+    this.settings.nibbsMode$.subscribe(nm => this.nibbsMode = nm);
 
     console.log('Aktueller Dark Mode:', this.darkMode);
     console.log('Aktueller Kaufland Mode:', this.kauflandMode);
+    console.log('Aktueller Nibbs Mode:', this.nibbsMode);
   }
-
-  
 
     doReorder(event: any) {
     const from = event.detail.from as number;
@@ -75,7 +76,7 @@ export class HomePage {
             this.presentToast('please enter an item or string too long!');
           }
           else {
-            const formattedInput = this.insertLineBreaks(textfields[0], 35); //nach 35 Zeichen break
+            const formattedInput = this.insertLineBreaks(textfields[0], 50); //nach 35 Zeichen break
             this.shoppingList.push(formattedInput);
             this.save();
           }        

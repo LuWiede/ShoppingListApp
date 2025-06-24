@@ -5,6 +5,7 @@ import { SettingsService } from '../services/settings.service';
 interface Settings {
   dark_mode: boolean;
   kaufland_mode: boolean;
+  nibbs_mode: boolean;
 }
 
 
@@ -17,16 +18,19 @@ interface Settings {
 export class SettingsPage implements OnInit {
 
   dark_mode: boolean = JSON.parse(localStorage.getItem('dark_mode') || 'true');
-   kaufland_mode: boolean = JSON.parse(localStorage.getItem('kaufland_mode') || 'false');
+  kaufland_mode: boolean = JSON.parse(localStorage.getItem('kaufland_mode') || 'false');
+  nibbs_mode: boolean = JSON.parse(localStorage.getItem('nibbs_mode') || 'false');
 
   constructor(private settings: SettingsService) {}
 
   ngOnInit() {
     this.settings.darkMode$.subscribe(dm => this.dark_mode = dm);
     this.settings.kauflandMode$.subscribe(km => this.kaufland_mode = km);
+    this.settings.nibbsMode$.subscribe(nm => this.nibbs_mode = nm);
 
      console.log('Aktueller Dark Mode:', this.dark_mode);
      console.log('Aktueller Kaufland Mode:', this.kaufland_mode);
+     console.log('Nibbs Mode:', this.nibbs_mode);
   }
 
   onDarkToggle(event: any) {
@@ -50,6 +54,16 @@ export class SettingsPage implements OnInit {
 
     this.ensureValidModes(kaufland, this.kaufland_mode);
     console.log('Kaufland Mode is now', kaufland);
+  }
+
+  onNibbsToggle(event: any) {
+    const nibbs = event.detail.checked;
+
+    this.settings.setNibbsMode(nibbs);
+
+    this.nibbs_mode = nibbs;
+    localStorage.setItem('nibbs_mode', JSON.stringify(nibbs));
+    console.log('Nibbs Mode is now', nibbs);
   }
 
   private ensureValidModes(dark: boolean, kaufland: boolean): void {
