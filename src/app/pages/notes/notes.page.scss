@@ -1,0 +1,332 @@
+.title {
+    text-align: center;
+    margin-right: 30px;
+}
+
+    .paddingBottom {
+        padding-bottom: 100px;
+    }
+
+    .footer {
+        position:fixed;
+        bottom:0;
+        padding: 3%;    
+    }
+
+    .kaufland-mode-page  {
+          ion-icon {
+        font-size: 25px;
+    }
+
+    .doneNotesList {
+        padding: 0px;
+    }
+
+  .addButton {
+        --border-radius:20%;
+        --color-hover: var(--ion-color-primary);
+        --background: white;
+        margin-right: 2%;
+        margin-bottom: 5%;
+        height: 55px;
+        width: 55px;
+        border-color: black;
+    }
+
+    .addIcon {
+        color: black;
+        width: 60px;
+        height: 60px;
+    }
+
+    .drag_drop {
+    color: white;
+    }
+
+    .title {
+        text-align: center;
+        margin-right: 30px;
+    }
+
+    .addIcon {
+        color: black;
+        width: 60px;
+        height: 60px;
+    }
+
+     ion-button {
+        --border-color: var(--ion-background-color);
+        --border-style: none;
+        --border-width: 1px;
+    }
+
+    .doneTask {
+        color:  black;
+        text-decoration: line-through;
+        text-decoration-color: rgba(109, 33, 33, 0.6);
+    }
+
+    .deleteButton {
+        color: #ce061d !important;
+    }
+
+    .toolbar {
+        text-align: center;
+    }
+
+    .deleteDoneList {
+        color: #ce061d;
+        text-align: right;
+        margin-right: 3%;
+    }
+
+    .doneText {
+        text-align: left;
+    }
+
+    .deleteDoneListButton {
+        color: #ce061d;
+        border-radius: 25px;
+        width: 25px;
+        height: 25px;
+        margin-top: -50px;
+    }
+
+    .hideDoneListButton {
+        border-radius: 25px;
+        width: 25px;
+        height: 25px;
+        margin-top: -50px;
+        color: black;
+    }
+
+    .done{
+        display:flex; justify-content:space-between;
+    }
+
+    .doneList {
+        margin-top: -25px;
+        padding: 0px;
+        --ion-item-background: white;
+    }
+
+    .doneText {
+        margin: -3%;
+        margin-left: 3%;
+        color:black;
+    }
+
+    .space {
+        margin: 5px;
+    }
+
+    ion-content {
+    margin-bottom: 500px;
+    }
+
+    .paddingBottom {
+        padding-bottom: 100px;
+    }
+
+    .noItemsText {
+        padding: 32px;
+        padding-top: 0px;
+        padding-bottom: 0%;
+        color: black;
+        --ion-item-background: white;
+    }
+
+    .customDeleteAltert {
+        background-color: rgb(6, 6, 6);
+        margin-top: 13%;
+    }
+
+    .paddingBottom {
+        padding-bottom: 100px;
+    }
+
+    hr.solid {
+        border-top: 1px solid rgb(175, 175, 175);
+        width: 100%;
+    }
+
+    .headline {
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 0%;
+    }
+
+    .listItem {
+        color: black;
+    }
+
+    .list {
+        --ion-item-background: white;
+        padding-bottom: 0px;
+    }
+
+    ion-reorder {
+    pointer-events: all !important;
+    z-index: 10;
+    }
+
+    }
+
+    //---------------------------------------------------------------------------------------------
+
+    .dark-mode-page  {
+           ion-icon {
+        font-size: 28px;
+  }
+
+    .addButton {
+        --border-radius:20%;
+        --color-hover: var(--ion-color-primary);
+        --background: rgb(63, 63, 63);
+        margin-right: 2%;
+        margin-bottom: 5%;
+        height: 55px;
+        width: 55px;
+    }
+    .drag_drop {
+        color: #121212;
+        }
+
+        .footer {
+    position:fixed;
+    bottom:0;
+    padding: 3%;
+}
+.addIcon {
+    color: rgba(229, 225, 225, 0.6);
+    width: 60px;
+    height: 60px;
+}
+
+ion-button {
+    --border-color: var(--ion-background-color);
+    --border-style: none;
+    --border-width: 1px;
+}
+
+.doneTask {
+    color:  rgba(142, 137, 137, 0.6);
+    text-decoration: line-through;
+    text-decoration-color: rgba(142, 137, 137, 0.6);
+}
+
+.deleteButton {
+    color: rgba(217, 104, 134);
+}
+
+.toolbar {
+    text-align: center;
+}
+
+.deleteDoneList {
+    color: rgba(217, 104, 134);
+    text-align: right;
+    margin-right: 3%;
+}
+
+.doneText {
+    text-align: left;
+}
+
+.deleteDoneListButton {
+    color: rgba(217, 104, 134);
+    border-radius: 25px;
+    width: 25px;
+    height: 25px;
+    margin-top: -50px;
+}
+
+.hideDoneListButton {
+    border-radius: 25px;
+    width: 25px;
+    height: 25px;
+    margin-top: -50px;
+    color: rgba(229, 225, 225, 0.6);
+}
+
+.done{
+    display:flex; justify-content:space-between;
+}
+
+.doneList {
+    margin-top: -25px;
+    padding: 0px;
+    --ion-item-background: #121212;
+}
+
+.doneText {
+    margin: -3%;
+    margin-left: 3%;
+    color: rgb(84, 84, 84);
+}
+
+.space {
+    margin: 5px;
+}
+
+ion-content {
+   margin-bottom: 500px;
+  }
+
+  .paddingBottom {
+    padding-bottom: 100px;
+  }
+
+  .noItemsText {
+    padding: 32px;
+    padding-top: 0px;
+    padding-bottom: 0%;
+    color: rgba(229, 225, 225, 0.6);
+    --ion-item-background: #121212;
+}
+
+.customDeleteAltert {
+    background-color: rgb(6, 6, 6);
+    margin-top: 13%;
+}
+
+.title {
+    text-align: center;
+    margin-right: 30px;
+}
+
+.paddingBottom {
+    padding-bottom: 100px;
+}
+
+hr.solid {
+    border-top: 1px solid rgb(84, 84, 84);
+    width: 100%;
+}
+
+.headline {
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 0%;
+    }
+
+.listItem {
+    color: rgb(255, 255, 255);
+}
+
+.list {
+    --ion-item-background: #121212;
+    padding-bottom: 0px;
+}
+
+ion-reorder {
+  pointer-events: all !important;
+  z-index: 10;
+}
+
+
+
+
+    }

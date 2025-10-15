@@ -1,0 +1,58 @@
+<ion-header [translucent]="true"
+[ngClass]="{
+    'dark-mode-page': darkMode,
+    'kaufland-mode-page': kauflandMode
+  }">
+  <ion-toolbar>
+    <ion-title class="title">Recipes</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"
+[ngClass]="{
+    'dark-mode-page': darkMode,
+    'kaufland-mode-page': kauflandMode
+  }">
+
+  <div class="paddingBottom">
+
+  <ion-list>
+  <ion-item-sliding *ngFor="let recipe of recipes">
+  <ion-item>
+    <ion-label>
+      <h2>{{ recipe.title }}</h2>
+      <p>{{ recipe.ingredients.join(', ') }}</p>
+    </ion-label>
+    <ion-button  class="addRecipes" fill="clear" slot="end" (click)="addToShoppingList(recipe.ingredients)">
+      <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-item-options side="end">
+    <ion-item-option class="transparent-icon-edit" (click)="editRecipe(recipe)">
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-item-option>
+    
+    <ion-item-option class="transparent-icon-delete" (click)="deleteRecipe(recipe)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>
+
+</ion-list>
+
+</div>
+
+  <ion-footer>
+    <ion-toolbar class="footer">
+      <ion-button class="addButton" slot="end" (click)="addRecipes()" ><ion-icon name="add-outline" class="addIcon"></ion-icon></ion-button>
+    </ion-toolbar>
+  </ion-footer>
+  
+</ion-content>
+

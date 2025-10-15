@@ -1,0 +1,162 @@
+<ion-menu contentId="main-content" side="start" type="overlay">
+  <ion-header>
+    <ion-toolbar class="toolbar">
+      <ion-title>Menu</ion-title>
+
+      <ion-buttons slot="start">
+      <ion-menu-toggle auto-hide="true">
+        <ion-button class="closeMenuButton">
+          <ion-icon name="menu-outline"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+
+    <!--
+      <ion-item routerLink="/notes">
+        <ion-icon slot="start" name="list-outline"></ion-icon>
+        <ion-label>Notes</ion-label>
+      </ion-item>-->
+
+      <ion-item routerLink="/recipes">
+        <ion-icon slot="start" name="fast-food-outline"></ion-icon>
+        <ion-label>Recipes</ion-label>
+      </ion-item>
+
+    <ion-item routerLink="/settings">
+        <ion-icon slot="start" name="settings-outline"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-item>
+
+    
+  </ion-content>
+</ion-menu>
+
+<ion-header [translucent]="true"
+[ngClass]="{
+    'dark-mode-page': darkMode,
+    'kaufland-mode-page': kauflandMode
+  }">
+  <ion-toolbar>
+    <ion-title class="title">Tasks</ion-title>
+
+    <!-- Sidebar-Button ganz links -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+ </ion-toolbar>
+ </ion-header>
+    
+
+<ion-content  id="main-content" [fullscreen]="true"
+[ngClass]="{
+    'dark-mode-page': darkMode,
+    'kaufland-mode-page': kauflandMode
+  }">
+
+  <div class="paddingBottom">
+
+    <hr class="nav"> 
+
+    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0 && darkMode">
+      <ion-img
+      src="../assets/allDone.jpg"
+      alt="all done">
+    </ion-img>
+    </div>
+
+    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length > 0 && kauflandMode">
+      <ion-img
+      src="../assets/kaufland.png"
+      alt="all done"
+      (click)="goToKaufland()">
+    </ion-img>
+    </div>
+
+  <div class= "kaufland" *ngIf="shoppingList.length == 0 && doneList.length == 0 && kauflandMode">
+    <p class="headline_kaufland">Don't miss our weekly specials
+    <a class="link_kaufland" href="https://filiale.kaufland.de/prospekte.html">Check now!</a>
+    </p>
+  </div>
+
+    <div class="noItemsText" *ngIf="shoppingList.length == 0 && doneList.length == 0 && darkMode" >
+      add new items
+    </div>
+
+<ion-list lines="none" class="list">
+  <ion-reorder-group [disabled]="false" (ionItemReorder)="doReorder($event)">
+
+    <!-- GENAU EINE *ngFor: hier auf ion-item-sliding -->
+    <ion-item-sliding *ngFor="let item of shoppingList; let i = index; trackBy: trackByIndex">
+
+      <ion-item class="listItem" [class.clicked]="clickedItemIndex===i">
+        <ion-icon 
+          slot="start"
+          class="doneButton"
+          [name]="i === clickedItemIndex ? 'checkmark-outline' : 'ellipse-outline'"
+          (click)="doneItem(i)">
+        </ion-icon>
+
+        <!-- Wenn du <br> speicherst -->
+        <ion-label [innerHTML]="item"></ion-label>
+        <!-- Falls nicht: <ion-label>{{ item }}</ion-label> -->
+
+        <ion-reorder class="drag_drop" slot="end"></ion-reorder>
+      </ion-item>
+
+      <!-- Rechts wischen: Edit + Delete -->
+      <ion-item-options side="end">
+        <ion-item-option  class="transparent-icon-edit"(click)="editItem(i)">
+          <ion-icon slot="start" name="create-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option class="transparent-icon-delete" (click)="deleteShoppingItem(i)">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+  </ion-reorder-group>
+</ion-list>
+
+
+
+
+    <hr class="solid"> 
+
+    <div class="headline" *ngIf="doneList.length > 0">
+      <div class="done"> 
+        <div class="doneText">Done</div>
+        <div>
+
+          <ion-icon class="hideDoneListButton" 
+          name="{{ display ? 'chevron-up-outline' : 'chevron-down-outline' }}"(click)="hideDoneList()"></ion-icon>
+          <b class="space"></b>
+          <ion-icon class="deleteDoneListButton" name="close-circle-outline" (click)="deleteDoneList()" slot="end"></ion-icon>     
+        </div>
+    </div>
+  </div>
+
+    <div id="hide" [ngStyle]="{'display': display ? 'none' : 'block'}">
+      <ion-list class="doneList" lines="none">
+        <ion-item *ngFor="let item of doneList; let i = index" class="doneTask">
+          <ion-label>{{ item }}</ion-label>
+          <ion-icon name="checkmark-outline" (click)="reverse(i)" slot="start"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+    
+
+</div>
+
+  <ion-footer>
+    <ion-toolbar class="footer">
+      <ion-button class="addButton" slot="end" (click)="addItem()"><ion-icon name="add-outline" class="addIcon"></ion-icon></ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
+
