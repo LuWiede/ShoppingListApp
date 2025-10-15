@@ -1,8 +1,28 @@
 /* allgemein*/
 
+.closeMenuButton {
+  font-size: 20px;
+}
+
+ion-icon {
+        font-size: 25px;
+  }
+
+.transparent-icon-delete {
+        background: transparent;
+        --background: transparent;
+        --color: rgb(217, 104, 134); 
+    }
+
 
 /* Kaufland Mode Background und Textfarbe */
 .kaufland-mode-page {
+
+    .transparent-icon-edit {
+        background: transparent;
+        --background: transparent;
+        --color: rgba(10, 10, 10, 0.6); 
+    }
 
     .kaufland {
         margin: 2%;
@@ -215,6 +235,12 @@
 
 /* dark Mode Background und Textfarbe  ----------------------------------------------------------------------------------------------------------------------------------*/
 .dark-mode-page {
+
+    .transparent-icon-edit {
+        background: transparent;
+        --background: transparent;
+        --color: rgba(234, 232, 232, 0.6); 
+    }
 
     .kaufland {
         display: none;

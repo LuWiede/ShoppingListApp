@@ -29,6 +29,9 @@ export class HomePage {
     private settings: SettingsService) {}
 
    ngOnInit() {
+
+    this.loadFromStorage();
+
     this.settings.darkMode$.subscribe(dm => this.darkMode = dm);
     this.settings.kauflandMode$.subscribe(km => this.kauflandMode = km);
     this.settings.nibbsMode$.subscribe(nm => this.nibbsMode = nm);
@@ -47,6 +50,15 @@ export class HomePage {
     this.shoppingList.splice(to, 0, moved);
     event.detail.complete();
     localStorage.setItem('items', JSON.stringify(this.shoppingList));
+  }
+
+  private loadFromStorage() {
+    this.shoppingList = JSON.parse(localStorage.getItem('items') || '[]');
+  }
+
+    ionViewWillEnter() {
+    // wird jedes Mal ausgeführt, wenn die Page sichtbar wird
+    this.loadFromStorage();
   }
 
   
@@ -212,4 +224,54 @@ export class HomePage {
     await alert.present();
   }
 }
+
+//Task bearbeiten
+trackByIndex = (idx: number) => idx;
+async editItem(i: number) {
+
+  const cssClasses = ['customAltert'];
+
+  if (this.darkMode) cssClasses.push('dark-mode-page');
+  if (this.kauflandMode) cssClasses.push('kaufland-mode-page');
+
+  // aktuellen Text holen
+  const current = String(this.shoppingList[i] ?? '');
+  // falls du <br> speicherst, fürs Eingabefeld entfernen
+  const plain = current.replace(/<br>/g, '');
+
+  const alert = await this.alertController.create({
+    header: 'Edit item',
+    cssClass: cssClasses, 
+    inputs: [{ name: 'value', type: 'text', value: plain, placeholder: 'item' }],
+    buttons: [
+      { text: 'Cancel', role: 'cancel' },
+      {
+        text: 'Save',
+        handler: (data) => {
+          const val = (data?.value || '').trim();
+          if (!val || val.length > 120) {
+            this.presentToast('please enter an item or string too long!');
+            return false;
+          }
+          // gleiche Logik wie bei addItem()
+          const formatted = this.insertLineBreaks(val, 50);
+          this.shoppingList[i] = formatted;
+          this.save();
+          this.presentToast('Item updated!');
+          return true;
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
+
+//Task löschen
+deleteShoppingItem(i: number) {
+  this.shoppingList.splice(i, 1);
+  this.save();
+  this.presentToast('Item deleted!');
+}
+
 }

@@ -46,7 +46,8 @@ recipes = [];
   const updated = [...savedItems, ...formattedIngredients];
 
   localStorage.setItem('items', JSON.stringify(updated));
-  this.presentToast('Zutaten hinzugefügt!');
+  this.presentToast('Ingredients added!');
+ 
 }
 
 //neue Rezepte erstellen
