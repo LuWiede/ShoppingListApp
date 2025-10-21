@@ -33,17 +33,22 @@ export class SettingsPage implements OnInit {
      console.log('Nibbs Mode:', this.nibbs_mode);
   }
 
-  onDarkToggle(event: any) {
-    const newDark = event.detail.checked;
-    this.settings.setDarkMode(newDark);
+onDarkToggle(event: any) {
+  const isDark = event.detail.checked;
 
-    this.dark_mode = newDark;
-    localStorage.setItem('dark_mode', JSON.stringify(newDark));
+  // Dark Mode aktivieren oder ausschalten
+  this.dark_mode = isDark;
+  this.settings.setDarkMode(isDark);
+  localStorage.setItem('dark_mode', JSON.stringify(isDark));
 
-    this.ensureValidModes(newDark, this.kaufland_mode);
-    console.log('Dark Mode is now', newDark);
+  // Kaufland ist dann automatisch das Gegenteil
+  const isKaufland = !isDark;
+  this.kaufland_mode = isKaufland;
+  this.settings.setKauflandMode(isKaufland);
+  localStorage.setItem('kaufland_mode', JSON.stringify(isKaufland));
   }
 
+  // wird nicht mehr gebraucht 
   onKauflandToggle(event: any) {
     const kaufland = event.detail.checked;
 

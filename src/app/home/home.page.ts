@@ -236,7 +236,6 @@ async editItem(i: number) {
 
   // aktuellen Text holen
   const current = String(this.shoppingList[i] ?? '');
-  // falls du <br> speicherst, fürs Eingabefeld entfernen
   const plain = current.replace(/<br>/g, '');
 
   const alert = await this.alertController.create({

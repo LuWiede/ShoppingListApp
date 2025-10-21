@@ -31,7 +31,6 @@
         <ion-icon slot="start" name="settings-outline"></ion-icon>
         <ion-label>Settings</ion-label>
       </ion-item>
-
     
   </ion-content>
 </ion-menu>
@@ -90,8 +89,7 @@
 <ion-list lines="none" class="list">
   <ion-reorder-group [disabled]="false" (ionItemReorder)="doReorder($event)">
 
-    <!-- GENAU EINE *ngFor: hier auf ion-item-sliding -->
-    <ion-item-sliding *ngFor="let item of shoppingList; let i = index; trackBy: trackByIndex">
+    <ion-item-sliding *ngFor="let item of shoppingList; let i = index">
 
       <ion-item class="listItem" [class.clicked]="clickedItemIndex===i">
         <ion-icon 
@@ -101,9 +99,7 @@
           (click)="doneItem(i)">
         </ion-icon>
 
-        <!-- Wenn du <br> speicherst -->
         <ion-label [innerHTML]="item"></ion-label>
-        <!-- Falls nicht: <ion-label>{{ item }}</ion-label> -->
 
         <ion-reorder class="drag_drop" slot="end"></ion-reorder>
       </ion-item>

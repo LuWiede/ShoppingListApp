@@ -14,7 +14,8 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
@@ -25,7 +26,7 @@ const routes: Routes = [
   {
     path: 'notes',
     loadChildren: () => import('./pages/notes/notes.module').then( m => m.NotesPageModule)
-  }
+  },
 
 ];
 
