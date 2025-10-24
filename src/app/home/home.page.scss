@@ -31,17 +31,21 @@ ion-button.menu-btn {
 
 /* dynamische, statische Liste */
 .card-content {
-  width: 75%;
+  width: 80%;
   min-height: 100px;
   border-radius: 24px;
   margin: 20px auto 0;
   padding: 16px;
   padding-left: 24px;
   padding-top: 24px;
-  box-shadow: 0 6px 14px rgba(0,0,0,.25);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  box-shadow: none !important;
+}
+
+.list-card {
+    box-shadow: none !important;
 }
 
 card-content .text {
@@ -125,10 +129,12 @@ ion-icon {
 /* Kaufland Mode Background und Textfarbe ///////////////////////////////////////////////////7 */
 .kaufland-mode-page {
 
+    box-shadow: none;
+
     .edit_delete_menu {
         padding-top: 0px !important;
         background-color: #fff !important;
-        color: #121212 !important;
+        color: #000000 !important;
     }
 
     ion-popover .edit_delete_menu ion-item {
@@ -150,7 +156,7 @@ ion-icon {
     }
 
     .add-list-btn {
-        width: 75%;
+        width: 80%;
         height: 44px;
         font-weight: 600;
         margin: 0 auto;
@@ -159,6 +165,7 @@ ion-icon {
         --ion-toolbar-background: #ffffff !important;
         --border-radius: 24px !important;
         font-weight: normal !important;
+        
     }
 
     .list-card {
@@ -408,6 +415,16 @@ ion-icon {
 /* dark Mode Background und Textfarbe  ----------------------------------------------------------------------------------------------------------------------------------*/
 .dark-mode-page {
 
+    box-shadow: none;
+
+     .list-card {
+        --background: #000 !important;
+    }
+
+    .ion-content {
+        --background: #000 !important;
+    }
+
     //delete edit menu für die dynamisch erstellten listen
     ion-card.tasks_lists ion-icon {
         color: #ffffff;
@@ -425,7 +442,7 @@ ion-icon {
     }
 
     .drag_drop {
-    color: #121212;
+    color: #000000;
     }
 
     .footer {
@@ -503,7 +520,7 @@ ion-button {
 .doneList {
     margin-top: -25px;
     padding: 0px;
-    --ion-item-background: #121212;
+    --ion-item-background: #000000;
 }
 
 .doneText {
@@ -529,7 +546,7 @@ ion-content {
     padding-top: 0px;
     padding-bottom: 0%;
     color: rgba(229, 225, 225, 0.6);
-    --ion-item-background: #121212;
+    --ion-item-background: #000000;
 }
 
 .customDeleteAltert {
@@ -560,7 +577,7 @@ hr.solid {
 }
 
 .list {
-    --ion-item-background: #121212;
+    --ion-item-background: #000000;
     padding-bottom: 0px;
 }
 
@@ -571,13 +588,12 @@ ion-reorder {
 
 /* Hintergrund dynamische Listen */
 .list-md {
-    background-color: #121212 !important;
+    background-color: #000000 !important;
 }
 
 .add-footer {
   /* keine Trennlinie */
   --border-width: 0;
-  /*background-color: #121212;*/
   padding-top: 10px;
   --background: transparent;
 }
@@ -599,6 +615,10 @@ ion-reorder {
   --ion-toolbar-background: #ffffff !important;
   --border-radius: 24px !important;
   font-weight: normal !important;
+}
+
+.toolbar-content {
+    --ion-background-color: #1e4285 !important;
 }
 
 .edit_delete_menu {

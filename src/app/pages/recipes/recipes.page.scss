@@ -21,6 +21,8 @@
 
 .kaufland-mode-page  {
 
+    box-shadow: none;
+
     .transparent-icon-edit {
         background: transparent;
         --background: transparent;
@@ -85,14 +87,16 @@
 
 .dark-mode-page {
 
+    box-shadow: none;
+
     .item-native {
-        --background: #121212 !important;
+        --background: #000000 !important;
     }
 
     .add-footer {
     /* keine Trennlinie */
     --border-width: 0;
-    background-color: #121212;
+    background-color: #000000;
     padding-top: 10px;
     --background: black !important;
     --ion-background-color: black !important;

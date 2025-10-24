@@ -25,6 +25,26 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+ion-reorder-group.md {
+  border: 0 !important;
+  --border-width: 0 !important;
+}
+
+ion-list, ion-item, ion-item-divider {
+  --inner-border-width: 0 !important;
+  --border-width: 0 !important;
+  border: 0 !important;
+}
+
+ion-content.dark-mode-page {
+
+    --background: #000 !important;
+    box-shadow: none !important;
+}
+
+toolbar-content.kaufland-mode-page {
+    --box-shadow: none !important;
+}
 
 ion-menu.kaufland-mode-page {
   /* Grundfarben */

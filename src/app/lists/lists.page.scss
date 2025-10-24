@@ -18,6 +18,8 @@ ion-icon {
 /* Kaufland Mode Background und Textfarbe */
 .kaufland-mode-page {
 
+    box-shadow: none;
+
     .transparent-icon-edit {
         background: transparent;
         --background: transparent;
@@ -282,6 +284,16 @@ ion-icon {
 /* dark Mode Background und Textfarbe  ----------------------------------------------------------------------------------------------------------------------------------*/
 .dark-mode-page {
 
+    box-shadow: none;
+
+    .listItem {
+        --background:#000 !important;
+    }
+
+    .doneTask {
+        --background:#000 !important;
+    }
+
     .transparent-icon-edit {
         background: transparent;
         --background: transparent;
@@ -293,7 +305,7 @@ ion-icon {
     }
 
     .drag_drop {
-    color: #121212;
+    color: #000000;
     }
 
     .footer {
@@ -371,7 +383,7 @@ ion-button {
 .doneList {
     margin-top: -25px;
     padding: 0px;
-    --ion-item-background: #121212;
+    --ion-item-background: #000000;
 }
 
 .doneText {
@@ -397,7 +409,7 @@ ion-content {
     padding-top: 0px;
     padding-bottom: 0%;
     color: rgba(229, 225, 225, 0.6);
-    --ion-item-background: #121212;
+    --ion-item-background: #000000;
 }
 
 .customDeleteAltert {
@@ -428,7 +440,7 @@ hr.solid {
 }
 
 .list {
-    --ion-item-background: #121212;
+    --ion-item-background: #000000;
     padding-bottom: 0px;
 }
 
@@ -441,7 +453,6 @@ ion-reorder {
 .add-footer {
   /* keine Trennlinie */
   --border-width: 0;
-  /*background-color: #121212;*/
   padding-top: 10px;
   --background: transparent;
 }
