@@ -5,8 +5,29 @@
 
 /*** Kaufland-Mode Luisa ***/
 .kaufland-mode-page {
-  --ion-toolbar-background:#ce061d !important;
-  --ion-color-primary: #ce061d !important;
+
+    --ion-item-background:#ffffff!important;
+    --ion-toolbar-background: #ffffff !important;
+  
+  ion-popover::part(content),
+    ion-popover ion-list {
+    --background: #ffffff !important;
+    --ion-item-background: #ffffff !important;
+    color: #000000 !important;
+    --ion-text-color: #000000 !important;
+    }
+
+    ion-popover ion-item ion-icon {
+    color: #000000 !important;
+    opacity: 0.7;
+    }
+
+    ion-popover ion-item:hover {
+    --background: black !important;
+    }
+
+  --ion-toolbar-background:#537699 !important;
+  --ion-color-primary: #537699!important;
   --ion-background-color: white!important;
   --background:white;
   --ion-item-background:white;
@@ -97,6 +118,10 @@
    */
 
   body {
+
+    --ion-item-background:#121212 !important;
+    --ion-toolbar-background: #121212 !important;
+
     --ion-color-primary: #5cc4da;
     --ion-color-primary-rgb: 92, 196, 218;
     --ion-color-primary-contrast: #000000;

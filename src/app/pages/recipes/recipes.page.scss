@@ -36,7 +36,7 @@
 
     ion-icon {
         font-size: 25px;
-  }
+    }
 
   .addButton {
         --border-radius:20%;
@@ -55,11 +55,62 @@
         height: 60px;
     }
 
+    .add-footer ion-toolbar {
+        --background: #ffffff !important; 
+        --ion-toolbar-background: #ffffff !important;
+        --border-width: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .add-toolbar {
+        --background: #fff !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    .add-list-btn {
+        width: 75%;
+        height: 44px;
+        font-weight: 600;
+        margin: 0 auto;
+        display: block;
+        margin: 0 auto 40px;
+        --ion-toolbar-background: #ffffff !important;
+        --border-radius: 24px !important;
+        font-weight: normal !important;
+    }
 }
 
 //-----------------------------------------------------------------------------------------------------
 
 .dark-mode-page {
+
+    .item-native {
+        --background: #121212 !important;
+    }
+
+    .add-footer {
+    /* keine Trennlinie */
+    --border-width: 0;
+    background-color: #121212;
+    padding-top: 10px;
+    --background: black !important;
+    --ion-background-color: black !important;
+    }
+
+    .add-list-btn {
+    width: 75%;
+    height: 44px;
+    font-weight: 600;
+    margin: 0 auto;
+    display: block;
+    margin: 0 auto 40px;
+    --background: rgb(83, 118, 153) !important;
+    --ion-toolbar-background: #ffffff !important;
+    --border-radius: 24px !important;
+    font-weight: normal !important;
+    }
+
 
     .transparent-icon-edit {
         background: transparent;

@@ -1,7 +1,114 @@
 /* allgemein*/
 
+ion-content {
+  --padding-bottom: 20px;
+}
+
 .closeMenuButton {
   font-size: 20px;
+}
+
+ion-card-subtitle {
+  color: #ffffff !important;
+}
+
+ion-button.menu-btn {
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+  padding: 0 !important;
+}
+
+/* Wrapper ist unsichtbar und zentriert die „Karte“ */
+.list-card {
+  /*--background: transparent;*/
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --min-height: auto;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+/* dynamische, statische Liste */
+.card-content {
+  width: 75%;
+  min-height: 100px;
+  border-radius: 24px;
+  margin: 20px auto 0;
+  padding: 16px;
+  padding-left: 24px;
+  padding-top: 24px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.25);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+card-content .text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 6px;
+}
+
+
+/* Text innerhalb der liste */
+.card-content .title {
+  font-size: 19px;
+  color: #fff;
+}
+
+.card-content .sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+}
+
+/* Drei-Punkte Button */
+.menu-btn ion-icon {
+  color: #fff !important;
+  opacity: 1 !important;
+  font-size: 22px;
+  margin-top: 0px; 
+}
+
+/* Drag-Handle unsichtbar, beeinflusst das Layout nicht */
+.list-reorder {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 40px; opacity: 0;
+  pointer-events: all; z-index: 10;
+}
+
+/* Liste ohne Hintergrund */
+ion-list.list-md { background: transparent !important; }
+
+ion-card-header {
+  text-align: left;
+  width: 100%;
+}
+ion-card.tasks_lists { display: block; }
+
+ion-card.tasks_lists ion-item {
+  --background: transparent;
+  --padding-start: 16px;
+  --inner-padding-end: 8px;
+}
+
+ion-card.tasks_lists ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --ripple-color: transparent;
+}
+
+ion-card.tasks_lists ion-icon {
+  font-size: 22px;
+  opacity: 0.7;
+}
+
+ion-card.tasks_lists ion-button:active ion-icon {
+  opacity: 1;
+  transform: scale(1.1);
+  transition: 0.15s;
 }
 
 ion-icon {
@@ -15,8 +122,58 @@ ion-icon {
     }
 
 
-/* Kaufland Mode Background und Textfarbe */
+/* Kaufland Mode Background und Textfarbe ///////////////////////////////////////////////////7 */
 .kaufland-mode-page {
+
+    .edit_delete_menu {
+        padding-top: 0px !important;
+        background-color: #fff !important;
+        color: #121212 !important;
+    }
+
+    ion-popover .edit_delete_menu ion-item {
+    --ripple-color: transparent !important;
+    --background-activated: transparent !important;
+    }
+
+    .add-footer ion-toolbar {
+        --background: #ffffff !important; 
+        --ion-toolbar-background: #ffffff !important;
+        --border-width: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .add-toolbar {
+        --background: #fff !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    .add-list-btn {
+        width: 75%;
+        height: 44px;
+        font-weight: 600;
+        margin: 0 auto;
+        display: block;
+        margin: 0 auto 40px;
+        --ion-toolbar-background: #ffffff !important;
+        --border-radius: 24px !important;
+        font-weight: normal !important;
+    }
+
+    .list-card {
+        --background: #fff;
+        --padding-start: 0;
+        --inner-padding-end: 0;
+        --min-height: auto;
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+
+    .card-content {
+        box-shadow: none !important;
+    }
 
     .transparent-icon-edit {
         background: transparent;
@@ -186,6 +343,7 @@ ion-icon {
 
     ion-content {
     margin-bottom: 500px;
+    
     }
 
     .paddingBottom {
@@ -231,10 +389,30 @@ ion-icon {
     pointer-events: all !important;
     z-index: 10;
     }
+
+    .add-list-btn {
+    width: 75%;
+    height: 44px;
+    font-weight: 600;
+    margin: 0 auto;
+    display: block;
+    margin: 0 auto 40px;
+    --background: rgb(83, 118, 153) !important;
+    --ion-toolbar-background: #ffffff !important;
+    --border-radius: 24px !important;
+    font-weight: normal !important;
     }
+
+}
 
 /* dark Mode Background und Textfarbe  ----------------------------------------------------------------------------------------------------------------------------------*/
 .dark-mode-page {
+
+    //delete edit menu für die dynamisch erstellten listen
+    ion-card.tasks_lists ion-icon {
+        color: #ffffff;
+        opacity: 0.8;
+    }
 
     .transparent-icon-edit {
         background: transparent;
@@ -390,5 +568,55 @@ ion-reorder {
   pointer-events: all !important;
   z-index: 10;
 }
+
+/* Hintergrund dynamische Listen */
+.list-md {
+    background-color: #121212 !important;
+}
+
+.add-footer {
+  /* keine Trennlinie */
+  --border-width: 0;
+  /*background-color: #121212;*/
+  padding-top: 10px;
+  --background: transparent;
+}
+
+.add-toolbar {
+  --background: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.add-list-btn {
+  width: 75%;
+  height: 44px;
+  font-weight: 600;
+  margin: 0 auto;
+  display: block;
+  margin: 0 auto 40px;
+  --background: rgb(83, 118, 153) !important;
+  --ion-toolbar-background: #ffffff !important;
+  --border-radius: 24px !important;
+  font-weight: normal !important;
+}
+
+.edit_delete_menu {
+    padding-top: 0px !important;
+}
+
+  ion-menu {
+    --ion-background-color: #ffffff;
+    --ion-text-color: #000 !important;
+    }
+
+    ion-menu ion-icon {
+    --color: #000 !important;
+    }
+
+    ion-menu ion-toolbar {
+    --background: #fff;
+    --color: #000 !important;
+    }
 
 }

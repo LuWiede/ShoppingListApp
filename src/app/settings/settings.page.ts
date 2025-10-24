@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController }  from '@ionic/angular';
 import { SettingsService } from '../services/settings.service';
+import { MenuController } from '@ionic/angular';
 
 interface Settings {
-  dark_mode: boolean;
-  kaufland_mode: boolean;
-  nibbs_mode: boolean;
+    dark_mode: boolean;
+      kaufland_mode: boolean;
+        nibbs_mode: boolean;
 }
 
 
@@ -21,7 +22,9 @@ export class SettingsPage implements OnInit {
   kaufland_mode: boolean = JSON.parse(localStorage.getItem('kaufland_mode') || 'false');
   nibbs_mode: boolean = JSON.parse(localStorage.getItem('nibbs_mode') || 'false');
 
-  constructor(private settings: SettingsService) {}
+  constructor(private settings: SettingsService,
+              private menu: MenuController
+  ) {}
 
   ngOnInit() {
     this.settings.darkMode$.subscribe(dm => this.dark_mode = dm);
@@ -78,6 +81,11 @@ onDarkToggle(event: any) {
       localStorage.setItem('dark_mode', JSON.stringify(true));
       console.warn('Beide Modi waren false – setzte Dark-Mode auf true als Fallback.');
     }
-  
 }
+
+// Menü ist auf Seite deaktiviert
+ionViewWillEnter() {
+  this.menu.enable(false);
+}
+
 }

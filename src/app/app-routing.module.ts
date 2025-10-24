@@ -26,11 +26,22 @@ const routes: Routes = [
   {
     path: 'notes',
     loadChildren: () => import('./pages/notes/notes.module').then( m => m.NotesPageModule)
-  },  {
+  },
+  {
     path: 'lists',
     loadChildren: () => import('./lists/lists.module').then( m => m.ListsPageModule)
   },
+  {
+    path: 'list-detail',
+    loadChildren: () => import('./list-detail/list-detail.module').then( m => m.ListDetailPageModule)
+  },
 
+  //wenn eine neue Liste erstellt wird, wird hier der Path der neuen Liste festgelegt
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
+  { path: 'list/:id', loadChildren: () => import('./list-detail/list-detail.module').then(m => m.ListDetailPageModule) 
+
+  },
 
 ];
 

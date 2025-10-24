@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../../services/settings.service';
 import { AlertController, RefresherCustomEvent, ToastController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recipes',
@@ -16,7 +17,8 @@ export class RecipesPage implements OnInit {
 
   constructor(private settings: SettingsService,
     private alertController: AlertController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private menu: MenuController
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,10 @@ export class RecipesPage implements OnInit {
 
 
 recipes = [];
+  // Menü ist auf dieser Seite komplett deaktiviert
+  ionViewWillEnter() {
+    this.menu.enable(false);
+  }
 
   //in Einkaufsliste hinzufügen
   addToShoppingList(ingredients: string[]) {
@@ -63,11 +69,12 @@ recipes = [];
     inputs: [
       {
         name: 'title',
-        placeholder: 'Titel'
+        placeholder: 'Titel',
+        attributes: { maxlength: 30 }
       },
       {
         name: 'ingredients',
-        placeholder: 'Ingredients (comma-separated)'
+        placeholder: 'Ingredients (comma-separated)',
       }
     ],
     buttons: [
@@ -78,22 +85,34 @@ recipes = [];
       {
         text: 'save',
         handler: (data) => {
-          if (!data.title || !data.ingredients) {
-            this.presentToast('Titel und Zutaten sind erforderlich!');
+          const rawTitle = String(data?.title ?? '').trim();
+          const rawIng   = String(data?.ingredients ?? '').trim();
+
+          if (!rawTitle || !rawIng) {
+            this.presentToast('Title and ingredients are required!');
             return false;
           }
 
+          if (rawTitle.length > 30) {
+            this.presentToast('Title: max. 30 characters allowed.');
+            return false;
+          }
+
+          const ingredients = this.parseAndValidateIngredients(rawIng);
+          if (ingredients === null) return false;
+
           const newRecipe = {
-            title: data.title,
-            ingredients: data.ingredients.split(',').map((z: string) => z.trim())
+            title: rawTitle,
+            ingredients
           };
 
           this.recipes.push(newRecipe);
           localStorage.setItem('recipes', JSON.stringify(this.recipes));
-          this.presentToast('Rezept gespeichert!');
+          this.presentToast('Recipe saved!');
           return true;
         }
       }
+
     ]
   });
 
@@ -151,30 +170,58 @@ async editRecipe(recipe) {
         text: 'cancel',
         role: 'cancel'
       },
-      {
-        text: 'save',
-        handler: (data) => {
-          if (!data.title || !data.ingredients) {
-            this.presentToast('Titel und Zutaten erforderlich!');
-            return false;
-          }
+     {
+      text: 'save',
+      handler: (data) => {
+        const rawTitle = String(data?.title ?? '').trim();
+        const rawIng   = String(data?.ingredients ?? '').trim();
 
-          recipe.title = data.title;
-          recipe.description = data.description;
-          recipe.ingredients = data.ingredients
-            .split(',')
-            .map((z: string) => z.trim());
-
-          localStorage.setItem('recipes', JSON.stringify(this.recipes));
-          this.presentToast('Rezept aktualisiert.');
-          return true;
+        if (!rawTitle || !rawIng) {
+          this.presentToast('Title and ingredients required!');
+          return false;
         }
+
+        if (rawTitle.length > 30) {
+          this.presentToast('Title: max. 30 characters allowed.');
+          return false;
+        }
+
+        const ingredients = this.parseAndValidateIngredients(rawIng);
+        if (ingredients === null) return false;
+
+        recipe.title = rawTitle;
+        recipe.ingredients = ingredients;
+
+        localStorage.setItem('recipes', JSON.stringify(this.recipes));
+        this.presentToast('Recipe updated.');
+        return true;
       }
+    }
     ]
   });
 
   await alert.present();
 }
+
+// Funktion die Hilft bei der Validierung der Eingaben der Zutaten
+  private parseAndValidateIngredients(raw: string): string[] | null {
+    // splitten, trimmen, leere Einträge entfernen
+    const arr = raw.split(',').map(s => s.trim()).filter(s => s.length > 0);
+
+    if (arr.length === 0) {
+      this.presentToast('Please enter an ingredient.');
+      return null;
+    }
+
+    for (const z of arr) {
+      if (z.length > 30) {
+        this.presentToast(`Ingredient too long: "${z.slice(0, 30)}" (max. 30 characters)`);
+        return null;
+      }
+    }
+
+    return arr;
+  }
 
 
 }

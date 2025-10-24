@@ -1,0 +1,105 @@
+<ion-header [translucent]="true"
+  [ngClass]="{ 'dark-mode-page': darkMode, 'kaufland-mode-page': kauflandMode }">
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="/home"></ion-back-button></ion-buttons>
+    <ion-title>{{ list?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="{ 'dark-mode-page': darkMode, 'kaufland-mode-page': kauflandMode }">
+  <div class="paddingBottom">
+
+    <hr class="nav"> 
+
+    <div class="noItemsText" *ngIf="list?.items?.length === 0 && list?.doneItems?.length > 0 && darkMode">
+      <ion-img
+      src="../assets/allDone.jpg"
+      alt="all done">
+    </ion-img>
+    </div>
+
+    <div class="noItemsText" *ngIf="list?.items?.length === 0 && list?.doneItems?.length > 0 && kauflandMode">
+      <ion-img
+      src="../assets/done_img.jpg"
+      alt="all done">
+    </ion-img>
+    </div>
+
+  <div class= "noItemsText" *ngIf="list?.items?.length == 0 && list?.doneItems?.length == 0 && kauflandMode">
+    add new items
+  </div>
+
+    <div class="noItemsText" *ngIf="list?.items?.length == 0 && list?.doneItems?.length == 0 && darkMode" >
+      add new items
+    </div>
+
+    <ion-list lines="none" class="list">
+      <ion-reorder-group [disabled]="false" (ionItemReorder)="doReorder($event)">
+
+        <ion-item-sliding *ngFor="let item of list?.items; let i = index">
+
+          <ion-item class="listItem" [class.clicked]="clickedItemIndex===i">
+            <ion-icon
+              slot="start"
+              class="doneButton"
+              [name]="i === clickedItemIndex ? 'checkmark-outline' : 'ellipse-outline'"
+              (click)="doneItem(i)">
+            </ion-icon>
+
+            <ion-label [innerHTML]="item"></ion-label>
+
+            <!-- Drag-Handle rechts -->
+            <ion-reorder class="drag_drop" slot="end"></ion-reorder>
+          </ion-item>
+
+          <!-- Wischen: Edit + Delete -->
+          <ion-item-options side="end">
+            <ion-item-option class="transparent-icon-edit" (click)="editItem(i)">
+              <ion-icon slot="start" name="create-outline"></ion-icon>
+            </ion-item-option>
+            <ion-item-option class="transparent-icon-delete" (click)="deleteShoppingItem(i)">
+              <ion-icon slot="start" name="close-outline"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+
+        </ion-item-sliding>
+
+      </ion-reorder-group>
+    </ion-list>
+
+
+    <hr class="solid">
+
+    <div class="headline" *ngIf="list?.doneItems?.length > 0">
+      <div class="done">
+        <div class="doneText">Done</div>
+        <div>
+          <ion-icon class="hideDoneListButton"
+                    [name]="display ? 'chevron-up-outline' : 'chevron-down-outline'"
+                    (click)="hideDoneList()"></ion-icon>
+          <b class="space"></b>
+          <ion-icon class="deleteDoneListButton"
+                    name="close-outline"
+                    (click)="deleteDoneList()" slot="end"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div id="hide" [ngStyle]="{'display': display ? 'none' : 'block'}">
+      <ion-list class="doneList" lines="none">
+        <ion-item *ngFor="let item of list?.doneItems; let i = index" class="doneTask">
+          <ion-label>{{ item }}</ion-label>
+          <ion-icon name="checkmark-outline" (click)="reverse(i)" slot="start"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>
+
+  <ion-footer class="add-footer"
+    [ngClass]="{ 'dark-mode-page': darkMode, 'kaufland-mode-page': kauflandMode }">
+    <ion-toolbar class="add-toolbar">
+    <ion-button class="add-list-btn" (click)="addItem()">Add Item</ion-button>
+  </ion-toolbar>
+</ion-footer>

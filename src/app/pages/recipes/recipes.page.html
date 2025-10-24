@@ -47,12 +47,13 @@
 </ion-list>
 
 </div>
-
-  <ion-footer>
-    <ion-toolbar class="footer">
-      <ion-button class="addButton" slot="end" (click)="addRecipes()" ><ion-icon name="add-outline" class="addIcon"></ion-icon></ion-button>
-    </ion-toolbar>
-  </ion-footer>
   
 </ion-content>
+
+<ion-footer class="add-footer"
+  [ngClass]="{ 'dark-mode-page': darkMode, 'kaufland-mode-page': kauflandMode }">
+  <ion-toolbar class="add-toolbar">
+    <ion-button class="add-list-btn" (click)="addRecipes()">Add RECIPES</ion-button>
+  </ion-toolbar>
+</ion-footer>
 
