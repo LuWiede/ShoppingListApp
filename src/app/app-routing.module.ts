@@ -23,10 +23,7 @@ const routes: Routes = [
     path: 'recipes',
     loadChildren: () => import('./pages/recipes/recipes.module').then( m => m.RecipesPageModule)
   },
-  {
-    path: 'notes',
-    loadChildren: () => import('./pages/notes/notes.module').then( m => m.NotesPageModule)
-  },
+
   {
     path: 'lists',
     loadChildren: () => import('./lists/lists.module').then( m => m.ListsPageModule)

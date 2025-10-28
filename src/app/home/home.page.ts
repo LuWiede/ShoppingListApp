@@ -161,21 +161,21 @@ async onEditList(list: List, ev?: Event) {
   }
 
   reorderLists(ev: any) {
-  const from = ev.detail.from as number;
-  const to   = ev.detail.to   as number;
+    const from = ev.detail.from as number;
+    const to   = ev.detail.to   as number;
 
-  // vollständigen Zustand holen
-  const all = this.lists.getAll();
-  const pinned    = all.filter(l => l.pinned);
-  const nonPinned = all.filter(l => !l.pinned);
+    // vollständigen Zustand holen
+    const all = this.lists.getAll();
+    const pinned    = all.filter(l => l.pinned);
+    const nonPinned = all.filter(l => !l.pinned);
 
-  // in nonPinned verschieben
-  const moved = nonPinned.splice(from, 1)[0];
-  nonPinned.splice(to, 0, moved);
+    // in nonPinned verschieben
+    const moved = nonPinned.splice(from, 1)[0];
+    nonPinned.splice(to, 0, moved);
 
-  this.lists.setAll([...pinned, ...nonPinned]);
+    this.lists.setAll([...pinned, ...nonPinned]);
 
-  ev.detail.complete();
-}
+    ev.detail.complete();
+  }
 
 }

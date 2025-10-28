@@ -56,7 +56,7 @@
   <ion-card class="list-card" button="true" routerLink="/lists">
   <div class="card-content" [style.background]="cardBg('#537699')">
     <div class="text">
-      <div class="title">Pauli's Einkaufsspaß</div>
+      <div class="title">Paul's Einkaufsspaß</div>
       <div class="sub">{{ shoppingCount }} items</div>
     </div>
   </div>
@@ -99,10 +99,12 @@
         [cssClass]="kauflandMode ? 'popover-light' : 'popover-dark'">
         <ng-template>
           <ion-list class="edit_delete_menu">
+
             <ion-item button lines="none" button (click)="onEditList(l, $event)">
               <ion-icon slot="start" name="create-outline"></ion-icon>
               <ion-label>Edit</ion-label>
             </ion-item>
+
             <ion-item button lines="none" button (click)="onDeleteList(l, $event)">
               <ion-icon slot="start" name="close-outline"></ion-icon>
               <ion-label>Delete</ion-label>

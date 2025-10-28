@@ -59,47 +59,62 @@ export class ListsPage {
     }
   
     
-      // Hilfsfunktion break nach x Zeichen 
-      insertLineBreaks(text: string, interval: number): string {
-      return text
-        .match(new RegExp(`.{1,${interval}}`, 'g'))  // erzeugt Array von Textblöcken
-        ?.join('<br>') || text;                      // gibt nur ein String zurück
+    // Hilfsfunktion break nach x Zeichen 
+    insertLineBreaks(text: string, interval: number): string {
+      let result = "";
+      let remaining = text;
+
+      while (remaining.length > interval) {
+        const cutIndex = remaining.lastIndexOf(" ", interval);
+        const indexToCut = cutIndex > -1 ? cutIndex : interval;
+
+        result += remaining.slice(0, indexToCut) + "<br>";
+        remaining = remaining.slice(indexToCut).replace(/^\s+/, "");
+      }
+
+      return result + remaining;
     }
   
-    async addItem(){
-  
-      const cssClasses = ['customAltert'];
-  
-      if (this.darkMode)  { cssClasses.push('dark-mode-page'); }
-      if (this.kauflandMode) { cssClasses.push('kaufland-mode-page'); }
-  
-      console.log(cssClasses);
-  
-      const alert = await this.alertController.create({
-        cssClass: cssClasses,
-        header: 'Add new item',
-        buttons: [{
+   async addItem() {
+    const cssClasses = ['customAltert'];
+    if (this.darkMode)  cssClasses.push('dark-mode-page');
+    if (this.kauflandMode) cssClasses.push('kaufland-mode-page');
+
+    const alert = await this.alertController.create({
+      cssClass: cssClasses,
+      header: 'Add new item',
+      inputs: [{ placeholder: 'new item' }],
+      buttons: [
+        { text: 'Cancel', role: 'cancel' },
+        {
           text: 'Add',
-          handler: (textfields) => {
-            if(textfields[0].length == 0 || textfields[0].length > 120){
+          handler: (textfields: string[]) => {
+            const raw = String(textfields?.[0] || '').trim();
+            if (!raw || raw.length > 120) {
               this.presentToast('please enter an item or string too long!');
+              return false; // Alert bleibt offen
             }
-            else {
-              const formattedInput = this.insertLineBreaks(textfields[0], 50); //nach 35 Zeichen break
-              this.shoppingList.push(formattedInput);
-              this.save();
-            }        
+
+            const formattedInput = this.insertLineBreaks(raw, 35);
+            this.shoppingList.push(formattedInput);
+            this.save();
+            this.presentToast('new Item added');
+
+            // Alert schließen und direkt neu öffnen, damit das Feld leer ist
+            setTimeout(async () => {
+              await alert.dismiss();
+              this.addItem();
+            }, 0);
+
+            return false;
           }
-        }],
-        inputs: [
-          {
-            placeholder: 'new item',
-          }
-        ],
-      });
-  
-      await alert.present();
-    }
+        }
+      ],
+    });
+
+    await alert.present();
+  }
+
   
   
     async presentToast(msg) {
@@ -230,7 +245,7 @@ export class ListsPage {
               return false;
             }
             // gleiche Logik wie bei addItem()
-            const formatted = this.insertLineBreaks(val, 50);
+            const formatted = this.insertLineBreaks(val, 35);
             this.shoppingList[i] = formatted;
             this.save();
             this.presentToast('Item updated!');

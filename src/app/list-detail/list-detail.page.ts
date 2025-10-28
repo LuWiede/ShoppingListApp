@@ -55,9 +55,20 @@ export class ListDetailPage implements OnInit, OnDestroy {
   }
 
   // Hilfsfunktion: Zeilenumbruch nach x Zeichen
-  insertLineBreaks(text: string, interval: number): string {
-    return text.match(new RegExp(`.{1,${interval}}`, 'g'))?.join('<br>') || text;
-  }
+   insertLineBreaks(text: string, interval: number): string {
+      let result = "";
+      let remaining = text;
+
+      while (remaining.length > interval) {
+        const cutIndex = remaining.lastIndexOf(" ", interval);
+        const indexToCut = cutIndex > -1 ? cutIndex : interval;
+
+        result += remaining.slice(0, indexToCut) + "<br>";
+        remaining = remaining.slice(indexToCut).replace(/^\s+/, "");
+      }
+
+      return result + remaining;
+    }
 
   async addItem() {
     const cssClasses = ['customAltert'];
@@ -67,21 +78,34 @@ export class ListDetailPage implements OnInit, OnDestroy {
     const alert = await this.alertController.create({
       cssClass: cssClasses,
       header: 'Add new item',
-      inputs: [{ placeholder: 'new item' }],
+      inputs: [{ name: 'item', type: 'text', placeholder: 'new item' }],
       buttons: [
         { text: 'Cancel', role: 'cancel' },
         {
           text: 'Add',
-          handler: (fields) => {
-            const v = String(fields?.[0] || '').trim();
-            if (!v || v.length > 120) { this.presentToast('please enter an item or string too long!'); return false; }
-            this.list.items.push(this.insertLineBreaks(v, 50));
+          handler: (fields: { item?: string }) => {
+            const v = String(fields?.item || '').trim();
+            if (!v || v.length > 120) {
+              this.presentToast('please enter an item or string too long!');
+              return false; // verhindert das automatische Schließen
+            }
+
+            this.list.items.push(this.insertLineBreaks(v, 35));
             this.save();
-            return true;
+            this.presentToast('new Item added');
+
+            // Alert schließen und sofort neu öffnen, dann ist das Feld leer
+            setTimeout(async () => {
+              await alert.dismiss();
+              this.addItem();
+            }, 0);
+
+            return false; // wir schließen manuell
           }
         }
       ]
     });
+
     await alert.present();
   }
 
@@ -126,7 +150,7 @@ export class ListDetailPage implements OnInit, OnDestroy {
           handler: (data) => {
             const val = (data?.value || '').trim();
             if (!val || val.length > 120) { this.presentToast('please enter an item or string too long!'); return false; }
-            this.list.items[i] = this.insertLineBreaks(val, 50);
+            this.list.items[i] = this.insertLineBreaks(val, 35);
             this.save();
             this.presentToast('Item updated!');
             return true;
